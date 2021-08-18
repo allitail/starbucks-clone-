@@ -55,7 +55,7 @@ new Swiper('.promotion .swiper-container', {
     loop: true,
     // autoplay: {
     //     delay: 500
-    // }
+    // },
     pagination: {
         el: '.promotion .swiper-pagination',
         clickable: true
@@ -65,4 +65,34 @@ new Swiper('.promotion .swiper-container', {
         nextEl: '.promotion .swiper-next'
     }
 });
-// console.log('js');
+
+console.log('js');
+
+const promotionEl = document.querySelector('.promotion', '.up');
+const promotionToggleBtn = document.querySelector('.toggle-promotion', '.view');
+let isHidePromotion = false;
+promotionToggleBtn.addEventListener('click', function () {
+    isHidePromotion = !isHidePromotion
+    if(isHidePromotion) {
+        promotionEl.classList.add('hide');
+    
+    } else {
+        promotionEl.classList.remove('hide');
+    }
+});
+
+
+function floatingObject(selector, delay, size) {
+    gsap.to(
+        selector,
+        random(1.5, 2.5), {
+        y: 20,
+        repeat: -1,
+        yoyo: true,
+        ease: Power1.easeInOut,
+        delay: random(0, delay)
+    });
+}
+floatingObject('.floating1', 1, 15);
+floatingObject('.floating1', .5, 15);
+floatingObject('.floating1', 1.5, 20);
